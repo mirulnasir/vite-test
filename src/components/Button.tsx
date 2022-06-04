@@ -6,19 +6,29 @@ interface IButton {
   style?: ButtonStyle;
   size?: ButtonSize;
   label: string;
-  href: string;
+  href?: string;
   mode?: "light";
   isFilled?: boolean;
+  onClick: (() => void) | undefined;
 }
-const Button: React.FC<IButton> = ({ href, label, mode, isFilled }) => {
+const Button: React.FC<IButton> = ({
+  onClick,
+  href,
+  label,
+  mode,
+  isFilled,
+}) => {
   return (
-    <a
-      className={`btn ${isFilled ? "btn--filled" : ""} ${
+    <button
+      onClick={onClick}
+      className={`btn pushable ${isFilled ? "btn--filled" : ""} ${
         mode === "light" ? "btn--light" : ""
       }`}
     >
-      <span className="label">{label}</span>
-    </a>
+      <span className="shadow"></span>
+      <span className="edge"></span>
+      <span className="label front">{label}</span>
+    </button>
   );
 };
 export default Button;

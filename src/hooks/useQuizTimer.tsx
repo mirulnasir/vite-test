@@ -10,11 +10,13 @@ interface IQuizTimerProvider {
   children: React.ReactNode;
 }
 export const QuizTimerProvider = ({ children }: IQuizTimerProvider) => {
-  const { start, seconds, minutes, hours } = useStopwatch({
+  const { start, seconds, minutes, hours, reset } = useStopwatch({
     autoStart: false,
   });
   return (
-    <QuizTimerContext.Provider value={{ start, seconds, minutes, hours }}>
+    <QuizTimerContext.Provider
+      value={{ start, seconds, minutes, hours, reset }}
+    >
       {children}
     </QuizTimerContext.Provider>
   );

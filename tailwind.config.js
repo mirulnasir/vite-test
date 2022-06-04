@@ -4,7 +4,13 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        heading: 'Party Confetti',
+        body: 'PT Sans',
+        mono: 'PT Mono'
+      }
+    },
   },
   plugins: [],
 }
