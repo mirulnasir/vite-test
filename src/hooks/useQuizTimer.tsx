@@ -10,7 +10,9 @@ interface IQuizTimerProvider {
   children: React.ReactNode;
 }
 export const QuizTimerProvider = ({ children }: IQuizTimerProvider) => {
-  const { start, seconds, minutes, hours } = useStopwatch();
+  const { start, seconds, minutes, hours } = useStopwatch({
+    autoStart: false,
+  });
   return (
     <QuizTimerContext.Provider value={{ start, seconds, minutes, hours }}>
       {children}
@@ -23,5 +25,5 @@ export const useQuizTimer = () => {
   if (typeof context === "undefined") {
     throw new Error("must have provider");
   }
-  return context;
+  return { ...context };
 };

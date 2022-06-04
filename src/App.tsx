@@ -21,6 +21,7 @@ function App() {
     <Router routes={routes} location={location}>
       <QuizTimerProvider>
         <main className="app min-h-[400px] w-full mx-auto max-w-4xl">
+          wuzzup
           <Outlet />
         </main>
       </QuizTimerProvider>
