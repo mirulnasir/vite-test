@@ -1,0 +1,11 @@
+import * as React from "react";
+
+interface IContainer {
+  children: React.ReactNode;
+}
+
+const Container = ({ children }: IContainer) => {
+  return <div className="container mx-auto px-8 lg:px-16">{children}</div>;
+};
+
+export default Container;
