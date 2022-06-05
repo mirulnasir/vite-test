@@ -5,26 +5,26 @@ import Question from "../components/Question";
 import Timer from "../components/Timer";
 import { useQuizTimer } from "../hooks/useQuizTimer";
 
-interface IQuestion1 {}
+interface IQuestion5 {}
 
-const Question1 = ({}: IQuestion1) => {
+const Question5 = ({}: IQuestion5) => {
   // const css = `body{
   //  background:red;
   // }`;
   return (
     <>
       <Question
-        i={1}
-        question={`What word are we looking for?`}
+        i={5}
+        question={`Read the poem and see if you can figure out the word we are looking for? `}
         media={
-          <img className=" w-60 h-auto mx-auto" src="/images/balloon.png" />
+          <img className=" w-60 h-auto mx-auto" src="/images/candle.png" />
         }
-        answer={"wish"}
-        hint="Use English alphabet to figure out witch number represent the letter"
+        answer={"celebrate"}
+        hint="line – word - letter"
       />
       <Timer />
     </>
   );
 };
 
-export default Question1;
+export default Question5;

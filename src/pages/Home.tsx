@@ -4,12 +4,23 @@ import BodyCopy from "../components/BodyCopy";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import List from "../components/List";
+import { routes } from "../config/routeConfig";
+import { routeToArr } from "../hooks/useQuizRoutes";
 import { useQuizTimer } from "../hooks/useQuizTimer";
 
 interface IHome {}
 
 const Home = ({}: IHome) => {
   const { start } = useQuizTimer();
+
+  React.useEffect(() => {
+    // const rA = routeToArr;
+
+    console.log(routes);
+    const rA = routes.map((route, i) => {
+      console.log(route);
+    });
+  }, []);
   return (
     <>
       <div className="text-center max-w-2xl mx-auto">

@@ -10,15 +10,15 @@
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: "Chewy";
-  src: url("/fonts/Chewy-Regular.woff2") format("woff2"),
-    url("/fonts/Chewy-Regular.woff") format("woff");
+/* @font-face {
+  font-family: 'Notably Absent';
+  src: url('/fonts/NotablyAbsent-Regular.woff2') format('woff2'),
+      url('/fonts/NotablyAbsent-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
+
 @font-face {
   font-family: "Party Confetti";
   src: url("/fonts/PartyConfetti-Regular.woff2") format("woff2"),
@@ -89,7 +89,6 @@ h5 {
   @apply block relative py-3 px-11 rounded-xl text-white will-change-transform font-heading;
 
   font-size: 1.25rem;
-  background: hsl(345deg 100% 47%);
   transform: translateY(-4px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
@@ -125,6 +124,6 @@ h5 {
   }
 
   & input {
-    @apply h-[50px] md:h-20  outline-none bg-transparent border-none font-mono font-bold text-purple-500 text-3xl tracking-[1.05em] md:tracking-[2em] ml-[0.6em] md:ml-[1em] relative;
+    @apply h-[50px] md:h-20  outline-none bg-transparent border-none font-mono font-bold text-purple-500 text-3xl tracking-[1.05em] md:tracking-[2.08em] ml-[0.6em] md:ml-[1em] relative;
   }
 }

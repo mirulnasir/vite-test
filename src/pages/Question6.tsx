@@ -5,26 +5,26 @@ import Question from "../components/Question";
 import Timer from "../components/Timer";
 import { useQuizTimer } from "../hooks/useQuizTimer";
 
-interface IQuestion1 {}
+interface IQuestion6 {}
 
-const Question1 = ({}: IQuestion1) => {
+const Question6 = ({}: IQuestion6) => {
   // const css = `body{
   //  background:red;
   // }`;
   return (
     <>
       <Question
-        i={1}
-        question={`What word are we looking for?`}
+        i={6}
+        question={`What colour would you get if you would mix the background colour of the first page and second page of the card?`}
         media={
-          <img className=" w-60 h-auto mx-auto" src="/images/balloon.png" />
+          <img className=" w-60 h-auto mx-auto" src="/images/candle.png" />
         }
-        answer={"wish"}
-        hint="Use English alphabet to figure out witch number represent the letter"
+        answer={"green"}
+        hint="the fist page is blue and second page is yellow"
       />
       <Timer />
     </>
   );
 };
 
-export default Question1;
+export default Question6;
