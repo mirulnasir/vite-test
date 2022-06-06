@@ -31,18 +31,18 @@ export const routes: Route[] = [
         path: "3",
         element: <Question3Page />,
       },
-      // {
-      //   path: "4",
-      //   element: <Question4Page />,
-      // },
-      // {
-      //   path: "5",
-      //   element: <Question5Page />,
-      // },
-      // {
-      //   path: "6",
-      //   element: <Question6Page />,
-      // },
+      {
+        path: "4",
+        element: <Question4Page />,
+      },
+      {
+        path: "5",
+        element: <Question5Page />,
+      },
+      {
+        path: "6",
+        element: <Question6Page />,
+      },
     ],
   },
   {
