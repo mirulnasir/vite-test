@@ -49,7 +49,7 @@
 html,
 body,
 #root {
-  @apply min-h-full relative;
+  @apply min-h-screen relative;
 }
 body {
   @apply font-body bg-slate-800 text-stone-100 overflow-y-auto;
