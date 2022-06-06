@@ -1,9 +1,6 @@
-import Lottie from "lottie-react";
 import * as React from "react";
-import AlertWrong from "../components/AlertWrong";
 import Question from "../components/Question";
 import Timer from "../components/Timer";
-import { useQuizTimer } from "../hooks/useQuizTimer";
 
 interface IQuestion4Page {}
 
@@ -17,7 +14,10 @@ const Question4Page = ({}: IQuestion4Page) => {
         i={4}
         question={`What number combination do you get if you connect only purple triangles that face each other?`}
         media={
-          <img className=" w-60 h-auto mx-auto" src="/images/balloon.png" />
+          <img
+            className=" w-72 h-auto mx-auto"
+            src="/images/arrow-connect.png"
+          />
         }
         answer={"1374"}
         hint="Use all pages of the card and connect only purple triangles that face each other"

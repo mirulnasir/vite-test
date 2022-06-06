@@ -22,9 +22,9 @@ function getNumberWithOrdinal(n: number) {
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
-[-4, -1, 0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 20, 21, 22, 100, 101, 111].forEach(
-  (n) => console.log(n + " -> " + getNumberWithOrdinal(n))
-);
+// [-4, -1, 0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 20, 21, 22, 100, 101, 111].forEach(
+//   (n) => console.log(n + " -> " + getNumberWithOrdinal(n))
+// );
 const ResultPage = ({}: IResultPage) => {
   const { start, pause, seconds, minutes, hours } = useQuizTimer();
   const [data, setData] = React.useState<IData[]>([]);
@@ -57,7 +57,7 @@ const ResultPage = ({}: IResultPage) => {
     setName(e.currentTarget.value);
   };
   const handleOnClickSubmit = () => {
-    console.log("submit");
+    // console.log("submit");
     // setSubmit(true);
     if (name.trim().length > 0) {
       setFormState((p) => ({ ...p, isSubmitting: true }));
@@ -79,7 +79,7 @@ const ResultPage = ({}: IResultPage) => {
           return data;
         };
         postData().then((resp) => {
-          console.log("finished submitting", resp);
+          // console.log("finished submitting", resp);
           if (resp) {
             const { id, name, timer } = resp[0] as unknown as IData;
             setData((p) => [...p, { id, name, timer, isUser: true }]);
@@ -97,7 +97,7 @@ const ResultPage = ({}: IResultPage) => {
       setLoading(false);
     } else {
       if (!state?.start) {
-        // gotoHome();
+        gotoHome();
       }
 
       const getData = async () => {

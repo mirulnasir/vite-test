@@ -13,9 +13,7 @@ const Question6Page = ({}: IQuestion6Page) => {
       <Question
         i={6}
         question={`What colour would you get if you would mix the background colour of the first page and second page of the card?`}
-        media={
-          <img className=" w-60 h-auto mx-auto" src="/images/candle.png" />
-        }
+        media={<></>}
         answer={"green"}
         hint="the fist page is blue and second page is yellow"
       />
