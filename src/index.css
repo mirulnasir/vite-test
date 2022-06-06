@@ -86,11 +86,14 @@ h5 {
   );
 }
 .front {
-  @apply block relative py-3 px-11 rounded-xl text-white will-change-transform font-heading;
+  @apply block relative py-2 px-10 text-lg tracking-wide rounded-xl text-white will-change-transform font-heading;
 
-  font-size: 1.25rem;
+  /* font-size: 1.25rem; */
   transform: translateY(-4px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+.btn--sm .front {
+  @apply py-1.5 px-6 text-base;
 }
 .pushable:hover {
   filter: brightness(110%);

@@ -21,7 +21,7 @@ export const QuizStatesProvider = ({ children }: IQuizStatesProvider) => {
   const isHome = router.state.location.pathname === "/";
   React.useEffect(() => {
     // console.log("state", state);
-    !isHome && !state.start ? gotoHome() : null;
+    // !isHome && !state.start ? gotoHome() : null;
   }, []);
   return (
     <QuizStatesContext.Provider value={{ state, setState }}>
