@@ -2,6 +2,7 @@ import { isEqual } from "lodash";
 import * as React from "react";
 import { useModal } from "../hooks/useModal";
 import useQuizRoutes from "../hooks/useQuizRoutes";
+import { useQuizTimer } from "../hooks/useQuizTimer";
 import AnswerBox from "./AnswerBox";
 import Button from "./Button";
 import Heading from "./Heading";
@@ -13,20 +14,24 @@ interface IQuestion {
   answer: string;
   media: React.ReactNode;
 }
-const initialAnswer = [""];
 const Question = ({ question, answer, i, hint, media }: IQuestion) => {
   const answerArr = answer.split(" ");
 
   const [userAnswer, setUserAnswer] = React.useState(answerArr.map(() => ""));
-  // console.log("yseranswer", userAnswer);
   const { setModalData } = useModal();
   const refs = React.useRef(
     answerArr.map(() => React.createRef<HTMLInputElement>())
   );
   const buttonSubmitRef = React.useRef<HTMLButtonElement>(null);
   const { gotoNextQuiz, isLastQuiz, gotoResult } = useQuizRoutes();
+  const { add1Minute } = useQuizTimer();
   const handleSubmit = () => {
-    isEqual(answerArr, userAnswer) ? doCorrect() : doWrong();
+    isEqual(
+      answerArr,
+      userAnswer.map((a) => a.toLowerCase())
+    )
+      ? doCorrect()
+      : doWrong();
   };
   const handleOnBlur = (i: number) => {
     if (i < answerArr.length - 1) {
@@ -38,7 +43,6 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
   const handleChange = (i: number) => {
     setUserAnswer((p) => {
       p[i] = refs.current[i].current?.value || "";
-      // console.log("changing", p);
       return p;
     });
   };
@@ -65,12 +69,11 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
       buttonLabel: "try again",
     });
     refs.current.map(({ current }) => {
-      // console.log("VVV", current!.value);
       current!.value = "";
-      // console.log("VVV2", current?.value);
     });
   }
   function displayHint() {
+    add1Minute();
     setModalData({
       on: true,
       type: "hint",

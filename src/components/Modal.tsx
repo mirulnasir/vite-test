@@ -27,7 +27,7 @@ type IModalDefault = {
 };
 const modalDefault: IModalDefault = {
   correct: {
-    heading: "Good work! You are correct !",
+    heading: "Good work! You are correct!",
     color: "bg-lime-900",
     image: LottieSuccess,
     imageClass: "h-[150px] w-[150px] object-cover mx-auto ",
@@ -70,13 +70,13 @@ const Modal = ({
   return (
     <>
       {on ? (
-        <div className="absolute  w-full h-full top-0 left-0 flex items-center justify-center">
+        <div className="absolute  w-full h-full top-0 left-0  flex items-center justify-center">
           <div
             className={`absolute w-full h-full backdrop-blur `}
             onClick={() => handleButtonClick?.()}
           ></div>
           <div
-            className={`relative transition-all w-[450px] flex items-center max-w-full justify-center ${returnDefault.color} shadow-md  shadow-zinc-500/30  rounded-xl `}
+            className={`relative transition-all w-[450px] flex items-center max-w-[calc(100%-3rem)] justify-center ${returnDefault.color} shadow-md  shadow-zinc-500/30  rounded-xl `}
           >
             <div className={` px-12 pb-8 lg:pt-4 lg:pb-14`}>
               <div className="text-center max-w-[300px] mx-auto">
