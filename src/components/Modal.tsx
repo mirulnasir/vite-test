@@ -63,13 +63,17 @@ const Modal = ({
   //   React.useEffect(() => {
   //     setOn(propsOn);
   //   }, [propsOn]);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  React.useEffect(() => {
+    on ? buttonRef.current?.focus() : null;
+  }, [on]);
   return (
     <>
       {on ? (
         <div className="absolute  w-full h-full top-0 left-0 flex items-center justify-center">
           <div
             className={`absolute w-full h-full backdrop-blur `}
-            onClick={() => setOn?.(!on)}
+            onClick={() => handleButtonClick?.()}
           ></div>
           <div
             className={`relative transition-all w-[450px] flex items-center max-w-full justify-center ${returnDefault.color} shadow-md  shadow-zinc-500/30  rounded-xl `}
@@ -95,7 +99,8 @@ const Modal = ({
                 {buttonLabel && handleButtonClick ? (
                   <div className="mt-4 lg:mt-8">
                     <Button
-                      label={buttonLabel ? buttonLabel : "Subimit"}
+                      ref={buttonRef}
+                      label={buttonLabel ? buttonLabel : "Submit"}
                       onClick={() => handleButtonClick()}
                     />
                   </div>

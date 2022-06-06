@@ -5,9 +5,9 @@ import Question from "../components/Question";
 import Timer from "../components/Timer";
 import { useQuizTimer } from "../hooks/useQuizTimer";
 
-interface IQuestion2 {}
+interface IQuestion2Page {}
 
-const Question2 = ({}: IQuestion2) => {
+const Question2Page = ({}: IQuestion2Page) => {
   // const css = `body{
   //  background:red;
   // }`;
@@ -27,4 +27,4 @@ const Question2 = ({}: IQuestion2) => {
   );
 };
 
-export default Question2;
+export default Question2Page;

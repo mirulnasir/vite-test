@@ -1,26 +1,19 @@
 import { Link } from "@tanstack/react-location";
 import * as React from "react";
-import BodyCopy from "../components/BodyCopy";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import List from "../components/List";
-import { routes } from "../config/routeConfig";
-import { routeToArr } from "../hooks/useQuizRoutes";
+import useQuizRoutes from "../hooks/useQuizRoutes";
+import { useQuizStates } from "../hooks/useQuizStates";
 import { useQuizTimer } from "../hooks/useQuizTimer";
 
 interface IHome {}
 
 const Home = ({}: IHome) => {
+  const { setState } = useQuizStates();
   const { start } = useQuizTimer();
 
-  React.useEffect(() => {
-    // const rA = routeToArr;
-
-    console.log(routes);
-    const rA = routes.map((route, i) => {
-      console.log(route);
-    });
-  }, []);
+  // console.log(rA);
   return (
     <>
       <div className="text-center max-w-2xl mx-auto">
@@ -39,8 +32,17 @@ const Home = ({}: IHome) => {
             "Your solving will be timed so you can access to the leader board.",
           ]}
         />
-        <Link to={"/q1"}>
-          <Button label={`start`} onClick={start} />
+        <Link to={"/q/1"}>
+          <Button
+            label={`start`}
+            onClick={() => {
+              setState?.((p) => {
+                p.start = true;
+                return p;
+              });
+              start!();
+            }}
+          />
         </Link>
       </div>
     </>

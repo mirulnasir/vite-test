@@ -1,13 +1,10 @@
-import Lottie from "lottie-react";
 import * as React from "react";
-import AlertWrong from "../components/AlertWrong";
 import Question from "../components/Question";
 import Timer from "../components/Timer";
-import { useQuizTimer } from "../hooks/useQuizTimer";
 
-interface IQuestion5 {}
+interface IQuestion5Page {}
 
-const Question5 = ({}: IQuestion5) => {
+const Question5Page = ({}: IQuestion5Page) => {
   // const css = `body{
   //  background:red;
   // }`;
@@ -27,4 +24,4 @@ const Question5 = ({}: IQuestion5) => {
   );
 };
 
-export default Question5;
+export default Question5Page;

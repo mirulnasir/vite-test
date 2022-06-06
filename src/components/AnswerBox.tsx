@@ -2,13 +2,15 @@ import * as React from "react";
 import { useWindowSize } from "../hooks/useWindowSize";
 
 interface IAnswerBox {
+  // value: string;
   max: number;
   handleOnChange?: (value: string) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleOnBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const AnswerBox = React.forwardRef<Ref, IAnswerBox>(
-  ({ max, handleOnChange, onChange }, ref) => {
+  ({ max, handleOnChange, onChange, handleOnBlur }, ref) => {
     const size = useWindowSize();
     const handleKeyUpBlur = ({
       currentTarget,
@@ -24,12 +26,14 @@ const AnswerBox = React.forwardRef<Ref, IAnswerBox>(
     return (
       <div className="answer-box">
         <input
+          // value={value}
           ref={ref}
           autoCorrect="false"
           autoComplete="false"
           onKeyUp={handleKeyUpBlur}
           // onFocus={handleKeyUpBlur}
           onChange={onChange}
+          onBlur={handleOnBlur}
           type="text"
           maxLength={max}
           className=""
@@ -40,8 +44,5 @@ const AnswerBox = React.forwardRef<Ref, IAnswerBox>(
   }
 );
 type Ref = HTMLInputElement;
-const AnswerBox2 = React.forwardRef<Ref, IAnswerBox>(({ max }, ref) => (
-  <input />
-));
 
 export default AnswerBox;

@@ -1,10 +1,10 @@
+import { isEqual } from "lodash";
 import * as React from "react";
+import { useModal } from "../hooks/useModal";
+import useQuizRoutes from "../hooks/useQuizRoutes";
 import AnswerBox from "./AnswerBox";
 import Button from "./Button";
 import Heading from "./Heading";
-import { isEqual } from "lodash";
-import { useModal } from "../hooks/useModal";
-import LottieInvalid from "../lottie/invalid.json";
 
 interface IQuestion {
   i: number;
@@ -15,29 +15,47 @@ interface IQuestion {
 }
 const initialAnswer = [""];
 const Question = ({ question, answer, i, hint, media }: IQuestion) => {
-  const [userAnswer, setUserAnswer] = React.useState(initialAnswer);
   const answerArr = answer.split(" ");
+
+  const [userAnswer, setUserAnswer] = React.useState(answerArr.map(() => ""));
+  // console.log("yseranswer", userAnswer);
   const { setModalData } = useModal();
   const refs = React.useRef(
     answerArr.map(() => React.createRef<HTMLInputElement>())
   );
+  const buttonSubmitRef = React.useRef<HTMLButtonElement>(null);
+  const { gotoNextQuiz, isLastQuiz, gotoResult } = useQuizRoutes();
   const handleSubmit = () => {
     isEqual(answerArr, userAnswer) ? doCorrect() : doWrong();
+  };
+  const handleOnBlur = (i: number) => {
+    if (i < answerArr.length - 1) {
+      refs.current[++i].current?.focus();
+    } else {
+      buttonSubmitRef.current?.focus();
+    }
   };
   const handleChange = (i: number) => {
     setUserAnswer((p) => {
       p[i] = refs.current[i].current?.value || "";
-
+      // console.log("changing", p);
       return p;
     });
   };
   function doCorrect() {
-    setModalData({
-      on: true,
-      type: "correct",
-      handleButtonClick: () => setModalData({ on: false }),
-      buttonLabel: "next question",
-    });
+    if (isLastQuiz) {
+      gotoResult();
+    } else {
+      setModalData({
+        on: true,
+        type: "correct",
+        handleButtonClick: () => {
+          setModalData({ on: false });
+          gotoNextQuiz();
+        },
+        buttonLabel: "next question",
+      });
+    }
   }
   function doWrong() {
     setModalData({
@@ -45,6 +63,11 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
       type: "incorrect",
       handleButtonClick: () => setModalData({ on: false }),
       buttonLabel: "try again",
+    });
+    refs.current.map(({ current }) => {
+      // console.log("VVV", current!.value);
+      current!.value = "";
+      // console.log("VVV2", current?.value);
     });
   }
   function displayHint() {
@@ -72,6 +95,7 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
                   max={max}
                   ref={refs.current[i]}
                   onChange={() => handleChange(i)}
+                  handleOnBlur={() => handleOnBlur(i)}
                 />
               );
             })}
@@ -81,7 +105,11 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
             <Button color="yellow" label="hint" onClick={() => displayHint()} />
           </div>
           <div className="px-2">
-            <Button label="submit" onClick={() => handleSubmit()} />
+            <Button
+              ref={buttonSubmitRef}
+              label="submit"
+              onClick={() => handleSubmit()}
+            />
           </div>
         </div>
       </div>
