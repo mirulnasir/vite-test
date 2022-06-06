@@ -88,7 +88,7 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
         <Heading text={`Question ${i}`} type="h4" />
         <Heading text={question} type="h2" margin="mb-5 lg:mb-12" />
         {media}
-        <div className="mt-6 lg:mt-12">
+        <div className="mt-6 lg:mt-12 pb-2 overflow-x-auto">
           {answerArr &&
             answerArr.map((a, i) => {
               const max = a.length;
