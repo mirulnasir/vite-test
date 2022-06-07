@@ -135,7 +135,7 @@ const ResultPage = ({}: IResultPage) => {
             animationData={confettiAnimation}
           />
           <div className="relative">
-            <div className=" p-2 lg:p-6  mx-auto w-[450px] max-w-full bg-stone-500/30 rounded-lg backdrop-blur-sm">
+            <div className=" p-3 lg:p-6  mx-auto w-[450px] max-w-full bg-stone-500/30 rounded-lg backdrop-blur-sm">
               <div className="w-full">
                 <Heading
                   text="Well Done!"
@@ -175,8 +175,8 @@ const ResultPage = ({}: IResultPage) => {
                       type="h2"
                       margin="mb-3 lg:mb-5"
                     />
-                    <div className="flex max-w-sm mx-auto flex-wrap items-center">
-                      <div className="px-3 md:flex-1 pb-2">
+                    <div className="flex max-w-sm mx-auto flex-wrap justify-center items-center">
+                      <div className="px-3 w-full md:w-auto md:flex-1 pb-3 md:pb-2">
                         <input
                           onChange={handleOnChangeInput}
                           type="text"
