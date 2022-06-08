@@ -142,7 +142,8 @@ body {
     }
 
     & input {
-      @apply h-[40px] md:h-20 p-0  outline-none bg-transparent border-none font-mono font-bold text-[#080808] focus:shadow-none focus:outline-none active:shadow-none active:outline-none focus:border-none active:border-none text-2xl md:text-3xl tracking-[1.08em] md:tracking-[2.08em] ml-[0.5em] md:ml-[1em] relative;
+      -webkit-text-size-adjust: none;
+      @apply h-[40px] md:h-20 p-0  outline-none bg-transparent border-none font-mono font-bold text-[#080808] focus:shadow-none focus:outline-none active:shadow-none active:outline-none focus:border-none active:border-none text-2xl md:text-3xl tracking-[1.07em] md:tracking-[2.08em] ml-[0.5em] md:ml-[1em] relative;
     }
   }
 }
