@@ -14,7 +14,10 @@ const Question1Page = ({}: IQuestion1Page) => {
         i={1}
         question={`What word are we looking for?`}
         media={
-          <img className=" w-60 h-auto mx-auto" src="/images/balloon.png" />
+          <img
+            className=" w-60 h-auto mx-auto  max-w-full"
+            src="/images/balloon.png"
+          />
         }
         answer={"wish"}
         hint="Use English alphabet to figure out witch number represent the letter"

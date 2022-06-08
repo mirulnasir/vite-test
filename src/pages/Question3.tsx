@@ -14,7 +14,10 @@ const Question3Page = ({}: IQuestion3Page) => {
         i={3}
         question={`What words are we looking for?`}
         media={
-          <img className=" w-60 h-auto mx-auto" src="/images/numbers.png" />
+          <img
+            className=" w-72 h-auto mx-auto max-w-full"
+            src="/images/numbers-group.png"
+          />
         }
         answer={"special day"}
         hint="In the card “Happy Birthday” is being wished in 4 different languages and in 4 different colours. Use the correct letters from the right phrases"

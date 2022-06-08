@@ -15,12 +15,12 @@ const Question4Page = ({}: IQuestion4Page) => {
         question={`What number combination do you get if you connect only purple triangles that face each other?`}
         media={
           <img
-            className=" w-72 h-auto mx-auto"
+            className=" w-72 h-auto mx-auto  max-w-full"
             src="/images/arrow-connect.png"
           />
         }
         answer={"1374"}
-        hint="Use all pages of the card and connect only purple triangles that face each other"
+        hint="use each page separately and connect the purple triangles with a pencil to reveal the numbers."
       />
       <Timer />
     </>

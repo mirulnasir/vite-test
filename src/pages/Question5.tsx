@@ -13,7 +13,12 @@ const Question5Page = ({}: IQuestion5Page) => {
       <Question
         i={5}
         question={`Read the poem and see if you can figure out the word we are looking for? `}
-        media={<img className=" w-24 h-auto mx-auto" src="/images/poem.png" />}
+        media={
+          <img
+            className=" w-24 h-auto mx-auto  max-w-full"
+            src="/images/poem.png"
+          />
+        }
         answer={"celebrate"}
         hint="line – word - letter"
       />
