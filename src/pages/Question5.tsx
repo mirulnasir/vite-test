@@ -15,7 +15,7 @@ const Question5Page = ({}: IQuestion5Page) => {
         question={`Read the poem and see if you can figure out the word we are looking for? `}
         media={
           <img
-            className=" w-24 h-auto mx-auto  max-w-full"
+            className=" w-16  md:w-24 h-auto mx-auto  max-w-full"
             src="https://excape.com.au/wp-content/challenge/images/poem.png"
           />
         }

@@ -20,7 +20,7 @@ export interface IModal {
   imageClass?: string;
   setOn?: (bool: boolean) => void;
 }
-type ModalType = "correct" | "incorrect" | "hint";
+type ModalType = "correct" | "incorrect" | "hint" | "solution";
 
 type IModalDefault = {
   [key in ModalType]: IModal;
@@ -41,6 +41,12 @@ const modalDefault: IModalDefault = {
   hint: {
     heading: "hint",
     color: "bg-yellow-700",
+    image: LottieInfo,
+    imageClass: "h-[150px] w-[150px] object-cover mx-auto p-8",
+  },
+  solution: {
+    heading: "solution",
+    color: "bg-sky-600",
     image: LottieInfo,
     imageClass: "h-[150px] w-[150px] object-cover mx-auto p-8",
   },

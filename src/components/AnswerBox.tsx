@@ -37,7 +37,7 @@ const AnswerBox = React.forwardRef<Ref, IAnswerBox>(
           type="text"
           maxLength={max}
           className=""
-          style={{ width: size.width > 767 ? max * 80 : max * 35 }}
+          style={{ width: size.width > 767 ? max * 80 : max * 40 }}
         />
       </div>
     );

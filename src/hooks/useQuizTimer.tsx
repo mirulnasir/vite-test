@@ -38,7 +38,17 @@ export const useQuizTimer = () => {
     console.log(time);
     reset!(time);
   };
-  return { ...context, add1Minute };
+  const add3Minutes = () => {
+    const { minutes, hours, seconds, reset } = context as StopwatchResult;
+
+    const time = new Date();
+    time.setHours(time.getHours() + hours!);
+    time.setMinutes(time.getMinutes() + minutes! + 3);
+    time.setSeconds(time.getSeconds() + seconds!);
+    console.log(time);
+    reset!(time);
+  };
+  return { ...context, add1Minute, add3Minutes };
 };
 
 // export const add1Minute = () => {

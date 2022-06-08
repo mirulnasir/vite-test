@@ -24,7 +24,7 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
   );
   const buttonSubmitRef = React.useRef<HTMLButtonElement>(null);
   const { gotoNextQuiz, isLastQuiz, gotoResult } = useQuizRoutes();
-  const { add1Minute } = useQuizTimer();
+  const { add1Minute, add3Minutes } = useQuizTimer();
   const handleSubmit = () => {
     isEqual(
       answerArr,
@@ -82,11 +82,28 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
       buttonLabel: "close",
     });
   }
+  function displaySolution() {
+    add3Minutes();
+    setModalData({
+      on: true,
+      type: "solution",
+      bodyCopy: answer,
+      handleButtonClick: () => {
+        setModalData({ on: false });
+        gotoNextQuiz();
+      },
+      buttonLabel: "next question",
+    });
+  }
   return (
     <>
-      <div className="text-center max-w-2xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto">
         <Heading text={`Question ${i}`} type="h4" />
-        <Heading text={question} type="h2" margin="mb-5 lg:mb-12" />
+        <Heading
+          text={question}
+          type="h2"
+          margin="max-w-xl mx-auto mb-5 lg:mb-12"
+        />
         {media}
         <div className="mt-6 lg:mt-12 pb-2 overflow-x-auto">
           {answerArr &&
@@ -103,15 +120,28 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
               );
             })}
         </div>
-        <div className="mt-4 lg:mt-8 flex -mx-2 justify-center">
-          <div className="px-2">
-            <Button color="yellow" label="hint" onClick={() => displayHint()} />
+        <div className="mt-4 lg:mt-8 flex flex-wrap -mx-2 justify-center">
+          <div className="px-2 ">
+            <Button
+              color="yellow"
+              sublabel="+1 minute"
+              label="hint"
+              onClick={() => displayHint()}
+            />
           </div>
-          <div className="px-2">
+          <div className="px-2 ">
             <Button
               ref={buttonSubmitRef}
               label="submit"
               onClick={() => handleSubmit()}
+            />
+          </div>
+          <div className="w-full mt-4 px-2">
+            <Button
+              color="blue"
+              label="solution"
+              sublabel="+3 minutes"
+              onClick={() => displaySolution()}
             />
           </div>
         </div>

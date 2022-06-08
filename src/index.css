@@ -76,18 +76,18 @@ body {
 @layer utilities {
   button {
     &.pushable {
-      @apply relative border-none shadow-none outline-none bg-transparent cursor-pointer;
+      @apply relative border-none shadow-none p-0 min-h-[60px] rounded-md outline-none bg-transparent cursor-pointer;
       outline-offset: 4px;
       transition: filter 250ms;
     }
     & .shadow {
-      @apply absolute top-0 left-0 w-full h-full will-change-transform rounded-xl;
+      @apply absolute top-0 left-0 w-full h-full min-h-[60px] will-change-transform rounded-xl;
       background: hsl(0deg 0% 0% / 0.25);
       transform: translateY(2px);
       transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
     }
     & .edge {
-      @apply absolute top-0 left-0 w-full h-full rounded-xl;
+      @apply absolute top-0 left-0 w-full min-h-[60px] h-full rounded-xl;
       background: linear-gradient(
         to left,
         hsl(340deg 100% 16%) 0%,
@@ -97,11 +97,14 @@ body {
       );
     }
     & .front {
-      @apply block relative py-2 px-10 text-lg tracking-wide rounded-xl text-white will-change-transform font-heading;
+      @apply relative py-2 px-10 text-lg min-h-[60px] flex flex-col justify-center tracking-wide rounded-xl text-white will-change-transform leading-snug font-heading;
 
       /* font-size: 1.25rem; */
       transform: translateY(-4px);
       transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+      & .sub {
+        @apply text-sm font-body font-normal mt-px leading-tight block;
+      }
     }
     &.btn--sm .front {
       @apply py-1.5 px-6 text-base;
@@ -139,7 +142,7 @@ body {
     }
 
     & input {
-      @apply h-[35px] md:h-20 p-0  outline-none bg-transparent border-none font-mono font-bold text-[#080808] focus:shadow-none focus:outline-none active:shadow-none active:outline-none focus:border-none active:border-none text-2xl md:text-3xl tracking-[0.855em] md:tracking-[2.08em] ml-[0.45em] md:ml-[1em] relative;
+      @apply h-[40px] md:h-20 p-0  outline-none bg-transparent border-none font-mono font-bold text-[#080808] focus:shadow-none focus:outline-none active:shadow-none active:outline-none focus:border-none active:border-none text-2xl md:text-3xl tracking-[1.08em] md:tracking-[2.08em] ml-[0.5em] md:ml-[1em] relative;
     }
   }
 }

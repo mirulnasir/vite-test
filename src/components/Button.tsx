@@ -6,6 +6,7 @@ interface IButton {
   style?: ButtonStyle;
   size?: ButtonSize;
   label: string;
+  sublabel?: string;
   href?: string;
   type?: "submit";
   color?: ButtonColor;
@@ -16,7 +17,7 @@ interface IButton {
 }
 type Ref = HTMLButtonElement;
 
-type ButtonColor = "red" | "yellow" | "green";
+type ButtonColor = "red" | "yellow" | "green" | "blue";
 type TypeButtonColorMap = {
   [key in ButtonColor]: string;
 };
@@ -24,11 +25,23 @@ const buttonColorMap: TypeButtonColorMap = {
   green: "bg-lime-600",
   red: "bg-red-600 ",
   yellow: "bg-amber-600",
+  blue: "bg-sky-700",
 };
 
 const Button = React.forwardRef<Ref, IButton>(
   (
-    { onClick, href, type, label, mode, isFilled, color, size, disabled },
+    {
+      onClick,
+      href,
+      type,
+      sublabel,
+      label,
+      mode,
+      isFilled,
+      color,
+      size,
+      disabled,
+    },
     ref
   ) => {
     return (
@@ -48,7 +61,8 @@ const Button = React.forwardRef<Ref, IButton>(
             color ? buttonColorMap[color] : buttonColorMap.red
           }`}
         >
-          {label}
+          <span>{label}</span>
+          {sublabel ? <span className="sub">{sublabel}</span> : null}
         </span>
       </button>
     );
