@@ -8,6 +8,7 @@ import Question5Page from "../pages/Question5";
 import Question6Page from "../pages/Question6";
 import ResultPage from "../pages/Result";
 
+export const basePath = "/challenge";
 export const questionPathName = "q";
 export const homePathName = "/";
 export const resultPathName = "/result";

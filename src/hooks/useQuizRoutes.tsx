@@ -3,6 +3,7 @@ import {
   questionPathName,
   resultPathName,
   homePathName,
+  basePath,
 } from "../config/routeConfig";
 
 interface IuseQuizRoutes {}
@@ -15,11 +16,13 @@ const useQuizRoutes = () => {
   const quizRoutes = routes.filter(
     (route, i) => route.path === questionPathName
   )[0].children;
+  console.log("routes", routes);
   // console.log(quizRoutes);
 
   const quizRoutesArr = quizRoutes!.map((r) => r.path);
+
   const currentQuiz = state.location.pathname.replace(
-    `/${questionPathName}/`,
+    `${basePath}/${questionPathName}/`,
     ""
   );
   // console.log(

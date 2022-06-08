@@ -16,7 +16,7 @@ const Question4Page = ({}: IQuestion4Page) => {
         media={
           <img
             className=" w-72 h-auto mx-auto  max-w-full"
-            src="/images/arrow-connect.png"
+            src="https://excape.com.au/wp-content/challenge/images/arrow-connect.png"
           />
         }
         answer={"1374"}

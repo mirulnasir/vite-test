@@ -37,7 +37,7 @@ const Button = React.forwardRef<Ref, IButton>(
         ref={ref}
         type={type}
         onClick={onClick}
-        className={`btn pushable ${size ? `btn--${size}` : ""} ${
+        className={` pushable ${size ? `btn--${size}` : ""} ${
           isFilled ? "btn--filled" : ""
         } ${mode === "light" ? "btn--light" : ""}`}
       >

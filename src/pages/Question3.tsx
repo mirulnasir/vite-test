@@ -16,7 +16,7 @@ const Question3Page = ({}: IQuestion3Page) => {
         media={
           <img
             className=" w-72 h-auto mx-auto max-w-full"
-            src="/images/numbers-group.png"
+            src="https://excape.com.au/wp-content/challenge/images/numbers-group.png"
           />
         }
         answer={"special day"}

@@ -16,7 +16,7 @@ const Question5Page = ({}: IQuestion5Page) => {
         media={
           <img
             className=" w-24 h-auto mx-auto  max-w-full"
-            src="/images/poem.png"
+            src="https://excape.com.au/wp-content/challenge/images/poem.png"
           />
         }
         answer={"celebrate"}

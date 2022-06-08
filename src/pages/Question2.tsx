@@ -19,7 +19,7 @@ const Question2Page = ({}: IQuestion2Page) => {
         media={
           <img
             className=" w-96 h-auto mx-auto  max-w-full"
-            src="/images/candle-full.png"
+            src="https://excape.com.au/wp-content/challenge/images/candle-full.png"
           />
         }
         answer={"love"}

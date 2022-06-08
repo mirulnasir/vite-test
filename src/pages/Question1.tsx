@@ -16,11 +16,11 @@ const Question1Page = ({}: IQuestion1Page) => {
         media={
           <img
             className=" w-60 h-auto mx-auto  max-w-full"
-            src="/images/balloon.png"
+            src="https://excape.com.au/wp-content/challenge/images/balloon.png"
           />
         }
         answer={"wish"}
-        hint="Use English alphabet to figure out witch number represent the letter"
+        hint="Use the English alphabet to figure out which number represent the letter"
       />
       <Timer />
     </>

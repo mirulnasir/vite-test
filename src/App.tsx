@@ -4,10 +4,10 @@ import { ModalProvider } from "./hooks/useModal";
 import { QuizStatesProvider } from "./hooks/useQuizStates";
 import { QuizTimerProvider } from "./hooks/useQuizTimer";
 
-const location = new ReactLocation();
+const challengelocation = new ReactLocation();
 function App() {
   return (
-    <Router routes={routes} location={location}>
+    <Router routes={routes} basepath="/challenge" location={challengelocation}>
       <QuizStatesProvider>
         <QuizTimerProvider>
           <ModalProvider>
