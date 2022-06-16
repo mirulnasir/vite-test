@@ -15,6 +15,10 @@ interface IData {
   name: string;
   timer: string;
   isUser: boolean;
+  hints: number;
+  solutions: number;
+  month?: number;
+  year?: number;
 }
 function getNumberWithOrdinal(n: number) {
   var s = ["th", "st", "nd", "rd"],
@@ -25,6 +29,14 @@ function getNumberWithOrdinal(n: number) {
 // [-4, -1, 0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 20, 21, 22, 100, 101, 111].forEach(
 //   (n) => console.log(n + " -> " + getNumberWithOrdinal(n))
 // );
+const currentDate = new Date();
+const currentMonthYear = new Date().toISOString().substring(0, 7);
+const currentMonth = currentDate.getMonth();
+const currentYear = currentDate.getFullYear();
+const startDate = new Date(currentYear, currentMonth, 1, 0, 0, 0, 0);
+const endDate = new Date(currentYear, (currentMonth + 1) % 12, 1, 0, 0, 0, 0);
+// const testDate = new Date(currentYear, currentMonth, 7, 0, 0, 1, 1);
+// console.log("DATE", earlyDate, endDate, testDate);
 const ResultPage = ({}: IResultPage) => {
   const { start, pause, seconds, minutes, hours } = useQuizTimer();
   const [data, setData] = React.useState<IData[]>([]);
@@ -52,6 +64,8 @@ const ResultPage = ({}: IResultPage) => {
       useGrouping: false,
     }),
   ].join(":");
+
+  // console.log("DATE", currentMonthYear);
   // console.log("fts", finalTimeToString);
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
@@ -74,6 +88,8 @@ const ResultPage = ({}: IResultPage) => {
                 finalTimeToString !== "00:00:00"
                   ? finalTimeToString
                   : "66:66:66",
+              hints: state!.hints,
+              solutions: state!.solutions,
             },
           ]);
           return data;
@@ -82,7 +98,17 @@ const ResultPage = ({}: IResultPage) => {
           // console.log("finished submitting", resp);
           if (resp) {
             const { id, name, timer } = resp[0] as unknown as IData;
-            setData((p) => [...p, { id, name, timer, isUser: true }]);
+            setData((p) => [
+              ...p,
+              {
+                id,
+                name,
+                timer,
+                isUser: true,
+                hints: state!.hints,
+                solutions: state!.solutions,
+              },
+            ]);
             setFormState({ submit: true, isSubmitting: false });
           } else {
             throw new Error("something wrong with the server");
@@ -103,18 +129,23 @@ const ResultPage = ({}: IResultPage) => {
       const getData = async () => {
         let { data: leaderboard, error } = await supabase
           .from("leaderboard")
-          .select("*");
+          .select("*")
+          .gte("created_at", startDate.toISOString())
+          .lte("created_at", endDate.toISOString());
         return leaderboard;
       };
 
       getData().then((resp) => {
+        // console.log("RESP", resp);
         resp
           ? setData(
-              resp.map(({ id, timer, name }) => {
+              resp.map(({ id, timer, name, hints, solutions }) => {
                 return {
                   id,
                   timer,
                   name,
+                  hints,
+                  solutions,
                   isUser: false,
                 };
               })
@@ -221,18 +252,28 @@ const ResultPage = ({}: IResultPage) => {
             <div className="max-w-[350px] mx-auto">
               {data ? (
                 <ul className="text-xl text-center space-y-2 lg:space-y-3">
+                  <li
+                    className={`space-x-2 py-2 px-2 md:py-3 md:px-4 rounded-none text-xs uppercase leading-tight  flex border-b border-stone-600`}
+                  >
+                    <span className="block flex-1">Name</span>
+                    <span className="block w-10">Hints</span>
+                    <span className="block w-14">Solutions</span>
+                    <span className="block w-20">Time</span>
+                  </li>
                   {data
                     .sort((a, b) => a.timer.localeCompare(b.timer))
-                    .map(({ id, timer, name, isUser }) => {
+                    .map(({ id, timer, name, isUser, hints, solutions }) => {
                       return (
                         <li
-                          className={`space-x-2 py-1 px-2 md:py-2 md:px-4 rounded-md leading-tight  flex justify-between ${
+                          className={`space-x-2 py-1 px-2 md:py-2 md:px-4 rounded-md leading-tight  flex ${
                             isUser ? "bg-green-600/50" : ""
                           }`}
                           key={id}
                         >
-                          <span className="block">{name}</span>
-                          <span className="block">{timer}</span>
+                          <span className="block flex-1">{name}</span>
+                          <span className="block w-10">{hints}</span>
+                          <span className="block w-14">{solutions}</span>
+                          <span className="block w-20">{timer}</span>
                         </li>
                       );
                     })}

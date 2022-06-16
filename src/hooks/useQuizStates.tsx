@@ -13,9 +13,16 @@ interface IQuizStatesProvider {
 }
 interface IQuizStates {
   start: boolean;
+  hints: number;
+  solutions: number;
 }
 export const QuizStatesProvider = ({ children }: IQuizStatesProvider) => {
-  const [state, setState] = React.useState<IQuizStates>({ start: false });
+  const [state, setState] = React.useState<IQuizStates>({
+    start: false,
+    hints: 0,
+    solutions: 0,
+  });
+  // console.log("quizstate", state.start, state.hints, state.solutions);
   const { gotoHome } = useQuizRoutes();
   const router = useRouter();
   const isHome = router.state.location.pathname === "/";

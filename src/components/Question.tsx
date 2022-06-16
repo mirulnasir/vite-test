@@ -2,6 +2,7 @@ import { isEqual } from "lodash";
 import * as React from "react";
 import { useModal } from "../hooks/useModal";
 import useQuizRoutes from "../hooks/useQuizRoutes";
+import { useQuizStates } from "../hooks/useQuizStates";
 import { useQuizTimer } from "../hooks/useQuizTimer";
 import AnswerBox from "./AnswerBox";
 import Button from "./Button";
@@ -16,7 +17,7 @@ interface IQuestion {
 }
 const Question = ({ question, answer, i, hint, media }: IQuestion) => {
   const answerArr = answer.split(" ");
-
+  const { setState: setQuizState } = useQuizStates();
   const [userAnswer, setUserAnswer] = React.useState(answerArr.map(() => ""));
   const { setModalData } = useModal();
   const refs = React.useRef(
@@ -73,6 +74,7 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
     });
   }
   function displayHint() {
+    setQuizState!((p) => ({ ...p, hints: p.hints + 1 }));
     add1Minute();
     setModalData({
       on: true,
@@ -83,6 +85,8 @@ const Question = ({ question, answer, i, hint, media }: IQuestion) => {
     });
   }
   function displaySolution() {
+    setQuizState!((p) => ({ ...p, solutions: p.solutions + 1 }));
+
     add3Minutes();
     setModalData({
       on: true,
