@@ -251,13 +251,13 @@ const ResultPage = ({}: IResultPage) => {
             </div>
             <div className="max-w-[350px] mx-auto">
               {data ? (
-                <ul className="text-xl text-center space-y-2 lg:space-y-3">
+                <ul className="text-xl text-center space-y-2 lg:space-y-3 ml-0 mb-0">
                   <li
                     className={`space-x-2 py-2 px-2 md:py-3 md:px-4 rounded-none text-xs uppercase leading-tight  flex border-b border-stone-600`}
                   >
                     <span className="block flex-1">Name</span>
                     <span className="block w-10">Hints</span>
-                    <span className="block w-14">Solutions</span>
+                    <span className="block w-[68px]">Solutions</span>
                     <span className="block w-20">Time</span>
                   </li>
                   {data
@@ -265,14 +265,14 @@ const ResultPage = ({}: IResultPage) => {
                     .map(({ id, timer, name, isUser, hints, solutions }) => {
                       return (
                         <li
-                          className={`space-x-2 py-1 px-2 md:py-2 md:px-4 rounded-md leading-tight  flex ${
+                          className={`space-x-2 text-base py-1 px-2 md:py-2 md:px-4 rounded-md leading-tight  flex ${
                             isUser ? "bg-green-600/50" : ""
                           }`}
                           key={id}
                         >
                           <span className="block flex-1">{name}</span>
                           <span className="block w-10">{hints}</span>
-                          <span className="block w-14">{solutions}</span>
+                          <span className="block  w-[68px]">{solutions}</span>
                           <span className="block w-20">{timer}</span>
                         </li>
                       );
